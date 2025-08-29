@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Government OSINT Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Government OSINT Dashboard</h1>
+        <form method="POST" action="/search">
+            <input type="text" name="query" placeholder="Enter search term..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        {{ if .Query }}
+        <h2>Results for "{{ .Query }}"</h2>
+        <ul>
+            {{ range .Results }}
+                <li>{{ . }}</li>
+            {{ else }}
+                <li>No results found.</li>
+            {{ end }}
+        </ul>
+        {{ end }}
+    </div>
+</body>
+</html>
